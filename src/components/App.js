@@ -35,6 +35,8 @@ class App extends Component {
     { name: 'Mount Abu', country: 'India' },
     { name: 'Tirupati', country: 'India' },
     ]
+
+    this.finalList = []
 }
   getKey(index) {
       return "location"+(index+1);
@@ -51,7 +53,7 @@ class App extends Component {
       return (city.country !== "India");
     }) 
 
-    this.cityList = indianCity.concat(otherCities)
+    this.finalList = indianCity.concat(otherCities)
   }
 
   render() {
@@ -62,7 +64,7 @@ class App extends Component {
         {/* Do not remove the main div */}
         {this.sort()}
         <ol>
-            {this.cityList.map((city,index)=>{
+            {this.finalList.map((city,index)=>{
                 return <li key = {this.getKey(index)}>{city.name} </li>
               })}
         </ol>
