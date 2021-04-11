@@ -55,13 +55,8 @@ class App extends Component {
    })
       
 
-    const otherCities =[] 
-    this.cityList.forEach((city) =>{
-          if(city.country !== "India")  
-            otherCities.push(city.name);
-    }) 
-
-    this.finalList = indianCity.concat(otherCities)
+   
+    this.finalList = indianCity
   }
 
   render() {
