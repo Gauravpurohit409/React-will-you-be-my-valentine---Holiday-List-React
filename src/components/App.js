@@ -44,13 +44,21 @@ class App extends Component {
 
   sort(){
    
-    const indianCity = this.cityList.filter((city) =>{
-        return (city.country === "India");
+    const indianCity = []
+     this.cityList.forEach((city) =>{
+        
+        if  (city.country === "India" && !indianCity.includes(city.name))
+        { 
+          console.log(indianCity)
+           indianCity.push(city.name)
+        }
    })
       
 
-    const otherCities =this.cityList.filter((city) =>{
-      return (city.country !== "India");
+    const otherCities =[] 
+    this.cityList.forEach((city) =>{
+          if(city.country !== "India")  
+            otherCities.push(city.name);
     }) 
 
     this.finalList = indianCity.concat(otherCities)
@@ -65,7 +73,7 @@ class App extends Component {
         {this.sort()}
         <ol>
             {this.finalList.map((city,index)=>{
-                return <li key = {this.getKey(index)}>{city.name} </li>
+                return <li key = {this.getKey(index)}>{city} </li>
               })}
         </ol>
       </div>
