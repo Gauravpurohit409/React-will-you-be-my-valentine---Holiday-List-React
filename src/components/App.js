@@ -35,12 +35,37 @@ class App extends Component {
     { name: 'Mount Abu', country: 'India' },
     { name: 'Tirupati', country: 'India' },
     ]
+}
+  getKey(index) {
+      return "location"+(index+1);
+  }
+
+  sort(){
+   
+    const indianCity = this.cityList.filter((city) =>{
+        return (city.country === "India");
+   })
+      
+
+    const otherCities =this.cityList.filter((city) =>{
+      return (city.country !== "India");
+    }) 
+
+    this.cityList = indianCity.concat(otherCities)
   }
 
   render() {
+    
+
     return (
       <div id="main">
         {/* Do not remove the main div */}
+        {this.sort()}
+        <ol>
+            {this.cityList.map((city,index)=>{
+                return <li key = {this.getKey(index)}>{city.name} </li>
+              })}
+        </ol>
       </div>
     )
   }
