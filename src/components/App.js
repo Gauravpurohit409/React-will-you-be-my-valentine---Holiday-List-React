@@ -36,7 +36,7 @@ class App extends Component {
     { name: 'Tirupati', country: 'India' },
     ]
 
-    this.finalList = []
+    this.finalList = this.sort();
 }
   getKey(index) {
       return "location"+(index+1);
@@ -54,9 +54,7 @@ class App extends Component {
         }
    })
       
-
-   
-    this.finalList = indianCity
+    return indianCity;
   }
 
   render() {
@@ -65,7 +63,7 @@ class App extends Component {
     return (
       <div id="main">
         {/* Do not remove the main div */}
-        {this.sort()}
+        
         <ol>
             {this.finalList.map((city,index)=>{
                 return <li key = {this.getKey(index)}>{city} </li>
